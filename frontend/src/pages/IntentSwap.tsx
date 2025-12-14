@@ -3,6 +3,7 @@ import IntentInput from "../components/IntentInput";
 
 export default function IntentSwap() {
   const [result, setResult] = useState<any | null>(null);
+
   const handle = (_text: string) => {
     // Simple regex-based "intent parsing" mock
     // We'll simulate a route result
@@ -16,21 +17,47 @@ export default function IntentSwap() {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="mb-4">
       <IntentInput onSubmit={handle} />
+
       {result && (
-        <div className="glass p-4 rounded-lg">
-          <div className="text-sm text-gray-300">Best Route Found 🎯</div>
-          <div className="flex items-center gap-2 my-3">
+        <div className="glass-card p-4 rounded mt-3">
+          <div className="small text-secondary">Best Route Found 🎯</div>
+
+          {/* Route */}
+          <div className="d-flex flex-wrap gap-2 my-3">
             {result.route.map((r: string, i: number) => (
-              <div key={i} className="px-3 py-1 bg-gray-900 rounded">{r}{i < result.route.length - 1 && " →"}</div>
+              <div
+                key={i}
+                className="px-3 py-1 rounded text-white"
+                style={{ backgroundColor: "#1a1a1a" }}
+              >
+                {r}
+                {i < result.route.length - 1 && " →"}
+              </div>
             ))}
           </div>
-          <div className="text-2xl font-bold">{result.receive}</div>
-          <div className="text-sm text-gray-400 mt-1">{result.eta}</div>
-          <div className="mt-3 text-xs text-gray-300">Fees: Network: {result.fees.network} • Exchange: {result.fees.exchange}</div>
+
+          {/* Receive Amount */}
+          <div className="h2 fw-bold">{result.receive}</div>
+          <div className="small text-muted mt-1">{result.eta}</div>
+
+          {/* Fees */}
+          <div className="mt-3 small text-secondary">
+            Fees: Network: {result.fees.network} • Exchange: {result.fees.exchange}
+          </div>
+
+          {/* Execute Button */}
           <div className="mt-4">
-            <button className="px-6 py-3 rounded bg-gradient-to-r from-cyan-400 to-purple-600 text-black font-semibold">Execute Swap</button>
+            <button
+              className="btn fw-semibold text-black"
+              style={{ 
+                background: "linear-gradient(90deg, #06b6d4, #8b5cf6)",
+                width: "100%"
+              }}
+            >
+              Execute Swap
+            </button>
           </div>
         </div>
       )}

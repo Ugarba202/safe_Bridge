@@ -3,33 +3,36 @@ import WalletConnectButton from "./WalletConnectButton";
 
 export default function AppShell() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a0118] to-[#14002b] text-white">
-      <div className="max-w-[1200px] mx-auto p-6">
-        <header className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-4">
-            <div className="text-2xl font-bold">SafeBridge</div>
-            <div className="text-xs text-gray-400">AA · Compliance · DeFi</div>
+    <div className="app-bg text-white min-vh-100">
+      <div className="container-xl py-4">
+        {/* Header */}
+        <header className="d-flex align-items-center justify-content-between mb-4">
+          <div className="d-flex align-items-center gap-3">
+            <div className="fs-3 fw-bold">SafeBridge</div>
+            <div className="small text-secondary">AA · Compliance · DeFi</div>
           </div>
-          <div className="flex items-center gap-4">
-            <WalletConnectButton />
-          </div>
+
+          <WalletConnectButton />
         </header>
 
-        <div className="grid grid-cols-12 gap-6">
-          <aside className="col-span-3">
-            <div className="glass p-4 rounded-lg">
-              <nav className="flex flex-col gap-3">
-                <Link to="/" className="text-sm text-gray-200 hover:text-white">Dashboard</Link>
-                <Link to="/intent" className="text-sm text-gray-200 hover:text-white">Intent Swap</Link>
-                <Link to="/compliance" className="text-sm text-gray-200 hover:text-white">Compliance</Link>
-                <Link to="/transactions" className="text-sm text-gray-200 hover:text-white">Transactions</Link>
-                <Link to="/settings" className="text-sm text-gray-200 hover:text-white">Settings</Link>
+        {/* Layout */}
+        <div className="row g-4">
+          {/* Sidebar */}
+          <aside className="col-md-3">
+            <div className="glass-card p-4 rounded-3">
+              <nav className="d-flex flex-column gap-3">
+                <Link className="nav-link text-light p-0" to="/">Dashboard</Link>
+                <Link className="nav-link text-light p-0" to="/intent">Intent Swap</Link>
+                <Link className="nav-link text-light p-0" to="/compliance">Compliance</Link>
+                <Link className="nav-link text-light p-0" to="/transactions">Transactions</Link>
+                <Link className="nav-link text-light p-0" to="/settings">Settings</Link>
               </nav>
             </div>
           </aside>
 
-          <main className="col-span-9">
-            <div className="glass p-6 rounded-lg min-h-[70vh]">
+          {/* Main content */}
+          <main className="col-md-9">
+            <div className="glass-card p-4 rounded-3 min-content-height">
               <Outlet />
             </div>
           </main>

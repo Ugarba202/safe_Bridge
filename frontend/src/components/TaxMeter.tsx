@@ -1,30 +1,52 @@
+export default function TaxMeter({
+  progress = 85,
+  taxDue = "₦245,000",
+}: {
+  progress?: number;
+  taxDue?: string;
+}) {
+  const radius = 36;
+  const circumference = 2 * Math.PI * radius;
+  const dash = (progress / 100) * circumference;
 
-export default function TaxMeter({ progress = 85, taxDue = "₦245,000" }: { progress?: number; taxDue?: string }) {
   return (
-    <div className="glass p-4 rounded-lg flex items-center gap-6">
-      <div className="w-24 h-24 relative">
-        <svg className="w-24 h-24">
-          <circle cx="48" cy="48" r="36" stroke="#1f2937" strokeWidth="8" fill="none" />
+    <div className="glass-card p-4 rounded d-flex align-items-center gap-4">
+      {/* Circular Meter */}
+      <div className="position-relative" style={{ width: 96, height: 96 }}>
+        <svg width="96" height="96">
           <circle
             cx="48"
             cy="48"
-            r="36"
+            r={radius}
+            stroke="#1f2937"
+            strokeWidth="8"
+            fill="none"
+          />
+          <circle
+            cx="48"
+            cy="48"
+            r={radius}
             stroke="#00fff5"
             strokeWidth="8"
-            strokeDasharray={`${(progress/100)*2*Math.PI*36} ${2*Math.PI*36}`}
+            strokeDasharray={`${dash} ${circumference}`}
             strokeLinecap="round"
             transform="rotate(-90 48 48)"
             fill="none"
           />
         </svg>
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <div className="text-sm text-gray-300">Tax Due</div>
-          <div className="font-semibold">{taxDue}</div>
+
+        <div className="position-absolute top-50 start-50 translate-middle text-center">
+          <div className="small text-secondary">Tax Due</div>
+          <div className="fw-semibold">{taxDue}</div>
         </div>
       </div>
+
+      {/* Text */}
       <div>
-        <div className="text-sm text-gray-300">Monthly tax progress</div>
-        <div className="text-xs text-gray-400">You are {progress}% towards monthly obligation</div>
+        <div className="small text-secondary">Monthly tax progress</div>
+        <div className="small text-muted">
+          You are {progress}% towards monthly obligation
+        </div>
       </div>
     </div>
   );

@@ -1,21 +1,27 @@
-
 import type { Tx } from "../types";
 
 export default function TransactionList({ items }: { items: Tx[] }) {
   return (
-    <div className="glass p-4 rounded-lg">
-      <h3 className="text-lg font-semibold mb-3">Recent Transactions</h3>
-      <ul className="flex flex-col gap-3">
+    <div className="glass-card p-3 rounded">
+      <h3 className="fs-5 fw-semibold mb-3">Recent Transactions</h3>
+      <ul className="list-unstyled d-flex flex-column gap-2">
         {items.map((t) => (
-          <li key={t.id} className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <span className={`w-3 h-3 rounded-full ${t.tagColor}`} />
+          <li key={t.id} className="d-flex justify-content-between align-items-center">
+            <div className="d-flex align-items-center gap-2">
+              <span
+                className="rounded-circle"
+                style={{ width: "0.75rem", height: "0.75rem", backgroundColor: t.tagColor }}
+              />
               <div>
-                <div className="text-sm">{t.title}</div>
-                <div className="text-xs text-gray-400">{t.time}</div>
+                <div className="small">{t.title}</div>
+                <div className="text-muted small">{t.time}</div>
               </div>
             </div>
-            <div className={`${t.positive ? "text-green-400" : "text-red-400"} font-medium`}>{t.amount}</div>
+            <div
+              className={`fw-medium ${t.positive ? "text-success" : "text-danger"}`}
+            >
+              {t.amount}
+            </div>
           </li>
         ))}
       </ul>

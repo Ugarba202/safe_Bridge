@@ -7,18 +7,26 @@ export default function WalletConnectButton() {
     return (
       <button
         onClick={connect}
-        className="px-4 py-2 rounded-md bg-gradient-to-r from-cyan-400 to-purple-500 text-black font-semibold shadow-md"
+        className="btn fw-semibold text-dark shadow"
+        style={{
+          background: "linear-gradient(90deg, #06b6d4 0%, #a855f7 100%)",
+        }}
       >
         Connect Wallet
       </button>
     );
   }
 
-  const short = `${address.slice(0,6)}...${address.slice(-4)}`;
+  const short = `${address.slice(0, 6)}...${address.slice(-4)}`;
   return (
-    <div className="flex items-center gap-3">
-      <span className="text-sm text-gray-300">{short}</span>
-      <button onClick={disconnect} className="px-3 py-1 border rounded text-sm border-gray-600 text-gray-200">Disconnect</button>
+    <div className="d-flex align-items-center gap-2">
+      <span className="small text-muted">{short}</span>
+      <button
+        onClick={disconnect}
+        className="btn btn-outline-secondary btn-sm"
+      >
+        Disconnect
+      </button>
     </div>
   );
 }

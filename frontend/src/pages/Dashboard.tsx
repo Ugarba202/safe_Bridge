@@ -1,47 +1,73 @@
 export default function Dashboard() {
   return (
-    <section className="py-6 space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="glass-card">
-          <h3 className="text-sm text-slate-300">Total Balance</h3>
-          <div className="mt-3 text-3xl font-bold">₦2,450,000</div>
-          <div className="mt-2 text-xs text-green-300 inline-flex items-center gap-2">✅ Compliance: 100%</div>
+    <section className="py-4">
+      {/* Top Section */}
+      <div className="row g-3">
+        {/* Total Balance */}
+        <div className="col-12 col-md-4">
+          <div className="glass-card p-3 rounded">
+            <h3 className="small text-secondary">Total Balance</h3>
+            <div className="h2 fw-bold mt-2">₦2,450,000</div>
+            <div className="small text-success mt-1 d-inline-flex align-items-center gap-1">
+              ✅ Compliance: 100%
+            </div>
+          </div>
         </div>
 
-        <div className="glass-card md:col-span-2">
-          <h3 className="text-sm text-slate-300">Portfolio</h3>
-          <div className="mt-4 flex gap-4">
-            <div className="flex-1 bg-gradient-to-br from-orange-600/20 to-transparent rounded-xl p-4">
-              <div className="text-sm text-slate-300">Bitcoin</div>
-              <div className="mt-2 font-semibold text-lg">0.5 BTC</div>
-            </div>
-            <div className="flex-1 bg-gradient-to-br from-blue-600/20 to-transparent rounded-xl p-4">
-              <div className="text-sm text-slate-300">Ethereum</div>
-              <div className="mt-2 font-semibold text-lg">2.3 ETH</div>
-            </div>
-            <div className="flex-1 bg-gradient-to-br from-green-600/20 to-transparent rounded-xl p-4">
-              <div className="text-sm text-slate-300">USDT</div>
-              <div className="mt-2 font-semibold text-lg">$5,000</div>
+        {/* Portfolio */}
+        <div className="col-12 col-md-8">
+          <div className="glass-card p-3 rounded">
+            <h3 className="small text-secondary">Portfolio</h3>
+            <div className="d-flex gap-3 mt-3">
+              <div className="flex-fill p-3 rounded" style={{ background: "linear-gradient(135deg, rgba(255,165,0,0.2), transparent)" }}>
+                <div className="small text-secondary">Bitcoin</div>
+                <div className="fw-semibold fs-5 mt-2">0.5 BTC</div>
+              </div>
+              <div className="flex-fill p-3 rounded" style={{ background: "linear-gradient(135deg, rgba(0,120,255,0.2), transparent)" }}>
+                <div className="small text-secondary">Ethereum</div>
+                <div className="fw-semibold fs-5 mt-2">2.3 ETH</div>
+              </div>
+              <div className="flex-fill p-3 rounded" style={{ background: "linear-gradient(135deg, rgba(0,255,150,0.2), transparent)" }}>
+                <div className="small text-secondary">USDT</div>
+                <div className="fw-semibold fs-5 mt-2">$5,000</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="glass-card lg:col-span-2">
-          <h3 className="text-sm text-slate-300">Transaction Volume</h3>
-          <div className="h-64 mt-4 bg-gradient-to-b from-white/2 to-transparent rounded-xl flex items-center justify-center text-slate-500">[Chart placeholder]</div>
+      {/* Bottom Section */}
+      <div className="row g-3 mt-3">
+        {/* Transaction Volume */}
+        <div className="col-12 col-lg-8">
+          <div className="glass-card p-3 rounded">
+            <h3 className="small text-secondary">Transaction Volume</h3>
+            <div className="d-flex align-items-center justify-content-center mt-3" style={{ height: "16rem", background: "rgba(255,255,255,0.02)", borderRadius: ".5rem", color: "#6c757d" }}>
+              [Chart placeholder]
+            </div>
+          </div>
         </div>
 
-        <aside className="glass-card">
-          <h3 className="text-sm text-slate-300">Quick Actions</h3>
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <button className="px-3 py-2 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20">Send</button>
-            <button className="px-3 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20">Swap</button>
-            <button className="px-3 py-2 rounded-lg bg-green-500/10 hover:bg-green-500/20">Receive</button>
-            <button className="px-3 py-2 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20">Stake</button>
+        {/* Quick Actions */}
+        <div className="col-12 col-lg-4">
+          <div className="glass-card p-3 rounded">
+            <h3 className="small text-secondary">Quick Actions</h3>
+            <div className="row g-2 mt-2">
+              <div className="col-6">
+                <button className="btn w-100" style={{ background: "rgba(14,211,233,0.1)" }}>Send</button>
+              </div>
+              <div className="col-6">
+                <button className="btn w-100" style={{ background: "rgba(139,92,246,0.1)" }}>Swap</button>
+              </div>
+              <div className="col-6">
+                <button className="btn w-100" style={{ background: "rgba(16,185,129,0.1)" }}>Receive</button>
+              </div>
+              <div className="col-6">
+                <button className="btn w-100" style={{ background: "rgba(253,224,71,0.1)" }}>Stake</button>
+              </div>
+            </div>
           </div>
-        </aside>
+        </div>
       </div>
     </section>
   );
